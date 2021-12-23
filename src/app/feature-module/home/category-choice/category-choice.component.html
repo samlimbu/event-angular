@@ -1,0 +1,12 @@
+<app-layout>
+    <div *ngIf="!LIST" class="spinner-container">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <div class="card-container">
+
+        <app-category-choice-card class="card" *ngFor="let item of LIST" [item]="item"
+            (buttonEvent)="onShowEvent($event)"></app-category-choice-card>
+    </div>
+    <app-footer></app-footer>
+</app-layout>

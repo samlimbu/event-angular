@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>{{item.title}}</h2>
+<mat-dialog-content>
+    <p>
+        <mat-icon class="symbol-text icon">location_on</mat-icon><span class="symbol-text">{{item['subtitle']}}</span>
+    </p>
+    <p class="project-stat__title-text-2">
+        <mat-icon class="symbol-text icon-2">event</mat-icon><span class="symbol-text">
+            {{item['date']}}
+        </span>
+    </p>
+    <p>{{item['detail']}}</p>
+    <div class="map-form-container">
+        <app-map [name]="'eventdetailmap'" [lonLat]='[item.lon,item.lat]' [readOnly]="true"></app-map>
+    </div>
+    
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button> -->
+</mat-dialog-actions>

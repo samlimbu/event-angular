@@ -1,0 +1,10 @@
+:host{
+    display: flex;
+    align-items: center;
+}
+
+.button-text{
+    margin-left: 1vh;
+    color: #3f51b5;
+    font-style: bold !important;
+  }

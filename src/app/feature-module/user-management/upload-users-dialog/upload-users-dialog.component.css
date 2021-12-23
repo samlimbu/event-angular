@@ -1,0 +1,22 @@
+table {
+    width: 100%;
+  }
+  .mat-elevation-z8{
+    margin-bottom: 10px;
+  }
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+
+
+  .subtitle-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+.subtitle-container h3{
+  margin-bottom: 0px;
+}

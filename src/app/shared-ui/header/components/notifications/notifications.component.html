@@ -1,0 +1,22 @@
+<button class="notification-button" mat-mini-fab [matMenuTriggerFor]="bell" #menuTrigger="matMenuTrigger" (click)="onNotificationClick()">
+  <mat-icon matBadge="{{getList().length-getSeenCount()}}" matBadgeHidden="{{getList().length-getSeenCount()<1}}" matBadgeColor="warn" class="notification-button__icon">notifications_none</mat-icon>
+</button>
+<mat-menu #bell="matMenu" xPosition="before" class="notification-menu">
+
+  <button *ngFor="let item of getList()" mat-menu-item class="notification-menu__button">
+    <mat-icon class="notification-menu__icon" [ngClass]="{'notification-menu__icon_green':item.icon=='check','notification-menu__icon_red':item.icon=='clear'}">{{item.icon}}</mat-icon>{{item.msg}}
+  </button>
+  <button class="clear-button" *ngIf="getList().length>0" type="button" mat-flat-button (click)="onClear()">Clear All Notification</button>
+</mat-menu>
+
+
+
+<!-- <button mat-menu-item class="notification-menu__button">
+  <mat-icon class="notification-menu__icon_green">thumb_up</mat-icon>What is the best way to get ...
+</button>
+<button mat-menu-item class="notification-menu__button">
+  <mat-icon class="notification-menu__icon_pink">notifications_none</mat-icon>This is just a simple notification
+</button>
+<button mat-menu-item class="notification-menu__button">
+  <mat-icon class="notification-menu__icon_blue">local_grocery_store</mat-icon>12 new orders has arrived today
+</button> -->

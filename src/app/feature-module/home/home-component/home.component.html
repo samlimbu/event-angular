@@ -1,0 +1,9 @@
+<app-layout>
+   
+    <div class="card-container">
+        <div class="card" *ngFor="let item of LIST">
+            <app-event-card lass="card" [LIST]="USEREVENTLIST" [item]="item" (buttonEvent)="onClick($event, item)" (detailEvent)="onDetail($event)"></app-event-card>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</app-layout>

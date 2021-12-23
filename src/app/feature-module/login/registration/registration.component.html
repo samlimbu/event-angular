@@ -1,0 +1,65 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <h2>Registration</h2>
+      <mat-error *ngIf="errorMessage">
+        {{errorMessage}}
+      </mat-error>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="First Name" formControlName="first_name">
+        <mat-error>
+          Please enter First Name.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Middle Name" formControlName="middle_name">
+
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Last Name" formControlName="last_name">
+        <mat-error>
+          Please enter Last Name.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error>
+          Please provide a valid email address.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Choose Username" formControlName="username">
+        <mat-error>
+          Please enter a username.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <input matInput type="Enter Password" placeholder="Password" formControlName="password">
+        <mat-error>
+          Please enter a password.
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button class="register-button" color="primary" [disabled]="isButtonDisable">Register
+        <mat-icon *ngIf="isButtonDisable">
+          <mat-spinner color="warn" diameter="20">
+          </mat-spinner>
+        </mat-icon>
+      </button>
+
+    </form>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+
+      <mat-card-content>
+        <p class="agreement-container">By clicking Register, you agree to our Terms, Data Policy and Cookies
+          Policy.</p>
+      </mat-card-content>
+    </mat-card-content>
+  </mat-card-content>
+
+
+
+</mat-card>

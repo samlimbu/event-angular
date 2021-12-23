@@ -1,0 +1,52 @@
+<mat-card class="example-card">
+  <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+  <div class="left-card-container">
+    <img mat-card-image *ngIf="image" [src]="image" />
+    <div class="left-side">
+      
+      <div class="left">
+
+        <mat-card-title class="project-stat__title">
+          <p class="project-stat__title-text-1">{{item['title']}}</p>
+        </mat-card-title>
+
+        <mat-card-subtitle class="symbol-text-container m-0">
+          <mat-icon class="symbol-text icon">location_on</mat-icon><span class="symbol-text">{{item['subtitle']}}</span>
+        </mat-card-subtitle>
+
+        <mat-card-subtitle class="symbol-text-container m-0">
+          <mat-icon class="symbol-text icon-2">event</mat-icon><span class="symbol-text">
+            <p class="project-stat__title-text-2">{{formattedDate}} {{formattedTime}}</p>
+          </span>
+        </mat-card-subtitle>
+      </div>
+      <div class="right">
+        <button mat-flat-button (click)="onDetail(item)">View more detail</button>
+      </div>
+    </div>
+
+    <!-- <mat-card-content>
+      <p>{{item['detail']}}</p>
+    </mat-card-content> -->
+    <!-- <mat-divider inset></mat-divider> -->
+    <mat-card-actions *ngIf="!message">
+      <button mat-flat-button color="primary" (click)="onAccept()">Accept</button>
+      <button mat-stroked-button color="warn" (click)="onDecline()">Decline</button>
+    </mat-card-actions>
+
+    <mat-card-actions *ngIf="message" class="text-button-container">
+      <mat-card-content class="text-button">
+        <p>{{message}}</p>
+      </mat-card-content>
+      <button mat-stroked-button class="text-button-2" color="accent" (click)="onChange()">Change my Mind</button>
+    </mat-card-actions>
+  </div>
+  <!-- <div div class="right-card-container">
+
+    <div class="map-form-container">
+      <app-map [name]="item.title" [lonLat]="[item.lon,item.lat]" [readOnly]="true"></app-map>
+    </div>
+
+<button mat-button (click)="openDialog()">Open dialog</button>
+  </div> -->
+</mat-card>

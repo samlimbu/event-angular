@@ -1,0 +1,36 @@
+<!-- <h4 mat-dialog-title matInputAutofocus>Are you sure to delete?</h4>
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)="onClick()" [ngClass]="{'css-disabled':isButtonDisable}">Yes
+        <mat-icon *ngIf="isButtonDisable">
+            <mat-spinner color="warn" diameter="20">
+            </mat-spinner>
+        </mat-icon>
+    </button>
+    <button mat-button (click)="onNoClick()" [ngClass]="{'css-disabled':isButtonDisable}">No</button>
+</div> -->
+<h4 mat-dialog-title matInputAutofocus>{{title}}</h4>
+<form *ngIf="!isDropDown" [formGroup]="form">
+    <mat-form-field class="full-width-input">
+        <input matInput formControlName="text">
+    </mat-form-field>
+
+
+</form>
+    <mat-form-field *ngIf="isDropDown" appearance="standard">
+        <mat-label>Select Role</mat-label>
+        <mat-select [(value)]="selected">
+            <mat-option *ngFor="let item of dropdownLIST" [value]="item.value">
+                {{item.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)="onClick()" [ngClass]="{'css-disabled':isButtonDisable}">Yes
+        <mat-icon *ngIf="isButtonDisable">
+            <mat-spinner color="warn" diameter="20">
+            </mat-spinner>
+        </mat-icon>
+    </button>
+    <button mat-button (click)="onNoClick()" [ngClass]="{'css-disabled':isButtonDisable}">No</button>
+</div>

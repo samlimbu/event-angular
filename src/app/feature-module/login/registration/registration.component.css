@@ -1,0 +1,17 @@
+mat-card {
+    max-width: 600px;
+    margin: 2em auto;
+    text-align: center;
+  }
+  
+  mat-form-field {
+    display: block;
+  }
+
+  .agreement-container{
+    margin-top: 15px !important;
+  }
+
+  .register-button{
+    margin-bottom: 15px;
+  }

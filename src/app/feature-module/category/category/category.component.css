@@ -1,0 +1,73 @@
+.button-container{
+    display: flex;
+}
+.dashboard-container{
+  padding: 10px;
+}
+#wrap {
+    background: rgba(255, 255, 255, 0);
+    padding: 1%;
+    text-align: center;
+    width: 60%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#left, #right {
+     background: rgba(255, 255, 255, 0);
+}
+#left{
+    margin-right: 1vh;
+}
+.button-text{
+    color: #3f51b5;
+    font-style: bold !important;
+}
+
+
+
+/* table */
+/* Structure */
+.example-container {
+    position: relative;
+  }
+  
+ 
+  
+  table {
+    width: 100%;
+  }
+  
+  .example-loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-rate-limit-reached {
+    max-width: 360px;
+    text-align: center;
+  }
+  
+  /* Column Widths */
+  .mat-column-number,
+  .mat-column-state {
+    max-width: 64px;
+  }
+  
+  .mat-column-created {
+    max-width: 124px;
+  }
+
+  .iconbutton{
+    margin: 0 auto;
+    display: block;
+  }

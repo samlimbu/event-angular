@@ -1,0 +1,61 @@
+<app-layout>
+    <div class="container" *ngIf="myForm">
+        <mat-card>
+            <mat-card-content>
+                <h2 class="heading-main put-center">{{title}}</h2>
+                <form [formGroup]="myForm">
+                    <div class="form-group">
+
+
+                        <mat-form-field>
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name">
+                            <mat-error>
+                                Please type category name.
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Details</mat-label>
+                            <textarea matInput formControlName="detail" matTextareaAutosize matAutosizeMinRows=5
+                                matAutosizeMaxRows=10></textarea>
+                        </mat-form-field>
+                        <!-- <mat-form-field class="hidden">
+                            <input matInput formControlName="_id" />
+                        </mat-form-field> -->
+                        
+                            <div class="image-form-container">
+                                <img *ngIf="image" [src]="image.imgbase64" />
+                                <button type="button" mat-raised-button (click)="fileInput.click()">Upload
+                                    Image</button>
+                                <span *ngIf="image" id="img-filename">{{image.filename}}  </span>
+                                <mat-error class="upload-msg" *ngIf="isUploadImgMsg">
+                                    Please upload Image.
+                                </mat-error>
+                                <input hidden formControlName="file" (click)="onFileClick()" (change)="onFileSelected()" #fileInput type="file"
+                                    id="file">
+                                    
+                            </div>
+                         
+                    </div>
+                    <br>
+                    <div class="margin-20 center-container">
+                        <button mat-raised-button color="primary" [disabled]="isButtonDisable || !myForm.valid" (click)="save()">Submit
+                            <mat-icon *ngIf="isButtonDisable">
+                                <mat-spinner color="warn" diameter="20">
+                                </mat-spinner>
+                            </mat-icon>
+                        </button>
+
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                </form>
+
+
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+    <app-footer></app-footer>
+</app-layout>

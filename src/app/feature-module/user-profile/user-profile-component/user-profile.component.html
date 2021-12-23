@@ -1,0 +1,119 @@
+<app-layout>
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="form">
+                <h2>Profile</h2>
+                <mat-error *ngIf="errorMessageProfile">
+                    {{errorMessageProfile}}
+                </mat-error>
+
+                <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Username" formControlName="username">
+                    <mat-error>
+                        Please enter a username.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width-input">
+                    <input matInput placeholder="First Name" formControlName="first_name">
+                    <mat-error>
+                        Please enter First Name.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Middle Name" formControlName="middle_name">
+
+                </mat-form-field>
+                <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Last Name" formControlName="last_name">
+                    <mat-error>
+                        Please enter Last Name.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Email" formControlName="email">
+                    <mat-error>
+                        Please provide a valid email address.
+                    </mat-error>
+                </mat-form-field>
+
+                <button *ngIf="!isEditProfile" mat-raised-button class="register-button" color="primary" (click)="onEditProfile()">Edit
+                    Profile
+                    <!-- <mat-icon *ngIf="!isEditProfile">
+                        <mat-spinner color="warn" diameter="20">
+                        </mat-spinner>
+                    </mat-icon> -->
+                </button>
+
+
+                <button mat-raised-button *ngIf="isEditProfile" class="register-button" color="primary" [disabled]="!form.valid" (click)="onSubmitProfile()">Update
+                    Profile
+                    <mat-icon *ngIf="isButtonDisableProfile">
+                        <mat-spinner color="warn" diameter="20">
+                        </mat-spinner>
+                    </mat-icon>
+                </button>
+
+            </form>
+
+            <mat-card-content>
+
+            </mat-card-content>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                <h2>Change Password</h2>
+                <mat-error *ngIf="errorMessage">
+                    {{errorMessage}}
+                </mat-error>
+                <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Enter Current Password" formControlName="current_password">
+                    <mat-error>
+                        Please provide current password
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Type New Password" formControlName="new_password">
+                    <mat-error>
+                        Please provide new password
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Confirm New Password" formControlName="new_password_check">
+
+
+                    <mat-error
+                        *ngIf="f['new_password_check'].touched && f['new_password_check'].invalid && f['new_password_check'].errors && f['new_password_check'].errors['required']">
+                        Type new password again.
+                    </mat-error>
+
+
+                    <mat-error
+                        *ngIf="f['new_password_check'].touched && f['new_password_check'].invalid && f['new_password_check'].errors && f['new_password_check'].errors['confirmedValidator']">
+                        Password do not match.
+                    </mat-error>
+
+                </mat-form-field>
+
+
+                <button mat-raised-button class="register-button" color="primary"
+                    [disabled]="!myForm.valid || isButtonDisable">Update
+                    Password
+                    <mat-icon *ngIf="isButtonDisable">
+                        <mat-spinner color="warn" diameter="20">
+                        </mat-spinner>
+                    </mat-icon>
+                </button>
+            </form>
+
+        </mat-card-content>
+
+
+
+    </mat-card>
+
+
+    <app-footer></app-footer>
+</app-layout>

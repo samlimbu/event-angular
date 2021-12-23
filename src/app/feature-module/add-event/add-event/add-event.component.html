@@ -1,0 +1,119 @@
+<app-layout>
+    <div class="container" *ngIf="myForm">
+        <div class="map-form-container">
+            <app-map [name]="'addeventmap'"></app-map>
+        </div>
+        <div class="form-heading-container">
+            <h2 class="mt-26 heading-main put-center">{{title}}</h2>
+            <form [formGroup]="myForm">
+
+                <div class="form-group">
+                    <mat-form-field appearance="standard">
+                        <mat-label>Event Title</mat-label>
+                        <input matInput formControlName="title">
+                        <mat-error>
+                            Please enter Event Title.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="standard">
+                        <mat-label>Location Name</mat-label>
+                        <input matInput formControlName="subtitle">
+                        <mat-error>
+                            Please enter Location.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div class="lat-lon-form-container">
+                    <mat-form-field appearance="standard" class="lat-form">
+                        <mat-label>Latitude</mat-label>
+                        <input matInput formControlName="lat">
+                        <mat-error>
+                            Please enter Location.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="standard" class="lon-form">
+                        <mat-label>Longitude</mat-label>
+                        <input matInput formControlName="lon">
+                        <mat-error>
+                            Please enter Location.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                    <mat-form-field appearance="standard">
+                        <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date and time"
+                            [formControl]="dateControl" [min]="minDate">
+                        <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+                        <ngx-mat-datetime-picker #picker [showSpinners]="true" [showSeconds]="false" [stepHour]="1"
+                            [stepMinute]="1" [stepSecond]="1" [touchUi]="false" [enableMeridian]="false"
+                            [disableMinute]="false" [hideTime]="false">
+                        </ngx-mat-datetime-picker>
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="standard">
+                        <mat-label>Category</mat-label>
+                        <mat-select formControlName="category_objid" [(value)]="selectedCategory"
+                            (selectionChange)="onSelectionChange($event)">
+                            <mat-option [value]="item._id" *ngFor="let item of CATEGORYLIST">{{item.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error>
+                            Please select category.
+                        </mat-error>
+                    </mat-form-field>
+
+
+
+                    <mat-form-field appearance="standard">
+                        <mat-label>Details</mat-label>
+                        <textarea matInput formControlName="detail" matTextareaAutosize matAutosizeMinRows=5
+                            matAutosizeMaxRows=10></textarea>
+                    </mat-form-field>
+
+                    <ng-container formArrayName="options" *ngFor="let address of options.controls; let i=index"
+                        class="panel panel-default">
+
+
+                        <ng-container [formGroupName]="i">
+
+                            <mat-form-field appearance="standard">
+                                <mat-label>Guest</mat-label>
+                                <input matInput formControlName="detail" placeholder="Guest Name {{i+1}}">
+                            </mat-form-field>
+                        </ng-container>
+                    </ng-container>
+                </div>
+
+                <div class="margin-20 guest-container">
+                    <button color="accent" mat-flat-button (click)="addOption()">
+                        <mat-icon>person_add</mat-icon><span> Add Guest</span>
+                    </button>
+                </div>
+                <br>
+                <div class="margin-20 center-container">
+
+                    <button mat-raised-button color="primary" [disabled]="!myForm.valid || isShowSaving"
+                        (click)="save()">Submit
+                        <mat-icon *ngIf="isShowSaving">
+                            <mat-spinner color="warn" diameter="20">
+                            </mat-spinner>
+                        </mat-icon>
+                    </button>
+
+
+                </div>
+
+            </form>
+        </div>
+
+     
+
+
+
+    </div>
+
+    <app-footer></app-footer>
+</app-layout>

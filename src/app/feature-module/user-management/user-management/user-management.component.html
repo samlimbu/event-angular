@@ -1,0 +1,104 @@
+<!-- <p *appUserRole="['Admin']">user-management works! Admin</p>
+<p *appUserRole="['Moderator']">user-management works! Moderator</p>
+<p *appUserRole="['User']">user-management works! User</p> -->
+<app-layout>
+
+    <div class="table-container">
+        <mat-toolbar class="page-header" role="heading">
+            <span class="heading-main">User Management</span>
+
+        </mat-toolbar>
+        <div id="wrap">
+            <div id="left">
+                <app-upload-users></app-upload-users>
+            </div>
+            <div id="right">
+                <app-search-box #SearchBox (textChange)="changeSearchText($event)"></app-search-box>
+            </div>
+        </div>
+        <div class="example-container mat-elevation-z8">
+            <div class="example-loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+                <mat-spinner *ngIf="true"></mat-spinner>
+                <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+                    API error.
+                </div>
+            </div>
+
+            <div class="example-table-container">
+
+                <table mat-table [dataSource]="data" class="example-table" matSort matSortActive="date"
+                    matSortDisableClear matSortDirection="desc">
+                    <!-- Number Column -->
+                    <ng-container matColumnDef="first_name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                        <td mat-cell *matCellDef="let row">{{row.first_name}} {{row.middle_name}} {{row.last_name}}</td>
+                    </ng-container>
+
+                    <!-- Title Column -->
+                    <ng-container matColumnDef="username">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
+                        <td mat-cell *matCellDef="let row">{{row.username}}</td>
+                    </ng-container>
+
+                    <!-- State Column -->
+                    <!-- <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Created On</th>
+              <td mat-cell *matCellDef="let row">{{row.createdOn | date: 'fullDate'}}</td>
+            </ng-container> -->
+
+                    <!-- Created Column -->
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                            Email
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{row.email}}</td>
+                    </ng-container>
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="roles">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                            Roles
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{row.roles}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="edit_role">
+                        <th mat-header-cell *matHeaderCellDef class="wd-10">Edit Role </th>
+                        <td mat-cell *matCellDef="let row"> <button mat-icon-button matTooltip="Click to Edit"
+                                class="iconbutton" color="accent" (click)="openDialogEditRole(row)">
+                                <mat-icon>edit</mat-icon>
+                            </button> </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="reset_password">
+                        <th mat-header-cell *matHeaderCellDef class="wd-10">Reset Password </th>
+                        <td mat-cell *matCellDef="let row"> <button mat-icon-button matTooltip="Click to Edit"
+                                class="iconbutton" color="primary" (click)="openDialogReset(row)">
+                                <mat-icon>build_circle</mat-icon>
+                            </button> </td>
+                    </ng-container>
+                    <ng-container matColumnDef="delete">
+                        <th mat-header-cell *matHeaderCellDef class="wd-10"> Delete </th>
+                        <td mat-cell *matCellDef="let row"> <button mat-icon-button matTooltip="Click to Delete"
+                                class="iconbutton" (click)="openDialogDelete(row)" color="warn">
+                                <mat-icon>delete</mat-icon>
+                            </button> </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell text-center" colspan="4">No data found.</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results">
+      </mat-paginator> -->
+            <mat-paginator [length]="resultsLength" [pageSize]="12" [pageSizeOptions]="[5, 12, 50, 100]"
+                showFirstLastButtons aria-label="Select page">
+            </mat-paginator>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</app-layout>

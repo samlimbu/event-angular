@@ -1,0 +1,5 @@
+<button mat-mini-fab color="primary" (click)="fileInput.click()">
+    <mat-icon>add</mat-icon>
+</button>
+<p class="button-text">Add Users</p>
+<input hidden (click)="onFileClick($event)" (change)="getData($event)" #fileInput type="file" id="file">

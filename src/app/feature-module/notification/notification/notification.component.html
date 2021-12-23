@@ -1,0 +1,39 @@
+<app-layout>
+    <div class="container" *ngIf="myForm">
+        <mat-card>
+            <mat-card-content>
+                <h2 class="heading-main put-center">{{title}}</h2>
+                <form [formGroup]="myForm">
+                    <div class="form-group">
+                        <mat-form-field>
+                            <mat-label>Message</mat-label>
+                            <input matInput formControlName="msg">
+                            <mat-error>
+                                Please type Message
+                            </mat-error>
+                        </mat-form-field>
+                              
+                         
+                    </div>
+                    <br>
+                    <div class="margin-20 center-container">
+                        <button mat-raised-button color="primary" [disabled]="isButtonDisable || !myForm.valid" (click)="save()">Submit
+                            <mat-icon *ngIf="isButtonDisable">
+                                <mat-spinner color="warn" diameter="20">
+                                </mat-spinner>
+                            </mat-icon>
+                        </button>
+
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                </form>
+
+
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+<app-footer></app-footer>
+</app-layout>

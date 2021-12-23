@@ -1,0 +1,5 @@
+.css-disabled{
+    pointer-events: none;
+    cursor: not-allowed;
+    color: rgba(0,0,0,.26);
+}

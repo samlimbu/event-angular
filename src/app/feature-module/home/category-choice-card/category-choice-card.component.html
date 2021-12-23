@@ -1,0 +1,9 @@
+<mat-card class="example-card">
+    <mat-card-title>{{item.name}}</mat-card-title>
+    <mat-card-content>
+        <p>{{item.detail}}</p><img mat-card-image *ngIf="image" [src]="image" />
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="onShowEvent(item)">Show Events</button>
+    </mat-card-actions>
+</mat-card>

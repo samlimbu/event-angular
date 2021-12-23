@@ -1,0 +1,74 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.heading-main{
+    font-weight: 400;
+    font-size: 1.5rem;
+
+  }
+
+  .put-center{
+    width: fit-content;
+    margin: 10px auto !important;
+  
+  }
+
+  .mat-expansion-panel-body {
+    padding: 0px!important;
+  }
+
+  .mat-expansion-panel{
+    box-shadow:none!important;
+  }
+
+  .mat-list-base {
+  
+    padding-bottom: 6px!important;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+   height: 48px; 
+}
+
+
+.example-table-container {
+  position: relative;
+  min-height: 100px;
+  max-height: calc(95vh - 289px);
+  overflow: auto;
+}
+
+.mat-menu-panel{
+  min-height: 0px!important;
+}
+
+.mat-input-element:disabled{
+  color: rgba(0,0,0,.78);
+}
+
+
+.ol-attribution {
+  display: none;
+}
+.ol-overlaycontainer-stopevent{
+  display: none;
+}
+
+.mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
+  background-image: none! important;
+}
+
+.password{
+  -webkit-text-security: disc;
+}
+
+.text-center{
+  text-align: center;
+}
+
+
+.wd-10{
+  width: 35px;
+  text-align: center !important;
+}

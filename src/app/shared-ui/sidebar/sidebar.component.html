@@ -1,0 +1,45 @@
+<mat-list>
+  <mat-list-item routerLink="{{routes.HOME}}" routerLinkActive="active">
+    <mat-icon>home</mat-icon> Home
+  </mat-list-item>
+</mat-list>
+<mat-list *appUserRole="['Admin','Moderator']">
+  <mat-accordion>
+    <mat-expansion-panel hideToggle [expanded]="getExpandState()" (opened)="setPanelState(true)">
+      <mat-expansion-panel-header class="disable_ripple">
+        <mat-list-item>
+          <mat-icon>settings</mat-icon> <span>Management</span>
+        </mat-list-item>
+      </mat-expansion-panel-header>
+      <mat-list-item routerLink="{{routes.EVENT}}" routerLinkActive="active" *appUserRole="['Admin','Moderator']">
+        <mat-icon>dashboard</mat-icon> Event
+      </mat-list-item>
+      <mat-list-item routerLink="{{routes.USER_MANAGEMENT}}" routerLinkActive="active" *appUserRole="['Admin']">
+        <mat-icon>groups</mat-icon> Users
+      </mat-list-item>
+      <mat-list-item routerLink="{{routes.CATEGORY}}" routerLinkActive="active" *appUserRole="['Admin']">
+        <mat-icon>category</mat-icon> Category
+      </mat-list-item>
+      <mat-list-item routerLink="{{routes.NOTIFICATION}}" routerLinkActive="active" *appUserRole="['Admin']">
+        <mat-icon>notifications</mat-icon> Notification
+      </mat-list-item>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</mat-list>
+
+<mat-list>
+  <a style="text-decoration: none;" (click)="onLogOut()">
+    <mat-list-item>
+      <mat-icon>logout</mat-icon> Logout
+    </mat-list-item>
+  </a>
+</mat-list>
+
+<!-- <p class="sidebar-title">Projects</p>
+
+<mat-list>
+  <mat-list-item> <div class="project-circle project-circle_yellow"></div> My resend </mat-list-item>
+  <mat-list-item> <div class="project-circle project-circle_blue"></div> Starred</mat-list-item>
+  <mat-list-item> <div class="project-circle project-circle_pink"></div> Background </mat-list-item>
+</mat-list> -->
